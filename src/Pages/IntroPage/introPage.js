@@ -20,7 +20,7 @@ const IntroPage = () => {
 
   return (
     <div className="intro-page-wrapper">
-      <h1>Welcome To Guess The Word Game</h1>
+      <h1 className="title">Welcome To Guess The Word Game</h1>
       <div className="intro-page-buttons">
         <Button
           text="Play!"
@@ -35,7 +35,7 @@ const IntroPage = () => {
           handleButton={handleScoreTableButton}
         />
       </div>
-      <lable>Your Maximum Score: {maxScore}</lable>
+      <lable className="lable">Your Maximum Score: {maxScore}</lable>
     </div>
   );
 };

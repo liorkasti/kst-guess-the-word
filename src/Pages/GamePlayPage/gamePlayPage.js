@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-// import { Countdown } from 'react-countdown-circle-timer'
+import { CountdownCircleTimer as Countdown } from "react-countdown-circle-timer";
 import randomWords from 'random-words';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
@@ -33,9 +33,7 @@ const GamePlayPage = () => {
   const state = useSelector((state) => state);
   const { life, score } = useSelector((state) => state);
 
-  console.log('State: ', state);
-  console.log('life: ', life);
-  console.log('-------: ', randomWord)
+  // console.log('level: ' + level);
 
   useEffect(() => {
     generateWord(level);
@@ -62,13 +60,11 @@ const GamePlayPage = () => {
   };
 
   const HandleInput = (event) => {
-    console.log('event', event);
     setUserInput(event.target.value);
   };
 
   const HandlePlaceholder = (length) => {
     setPlaceholder('_')
-    console.log('length', length);
     if (length > randomWord.length) { length = randomWord.length; }
     for (let index = 0; index < length + 1; index++) {
       setPlaceholder(placeholder + ' _')
@@ -81,7 +77,7 @@ const GamePlayPage = () => {
     if (userInput === randomWord) {
       startDate.current = Date.now();
       store.dispatch(riseLevel);
-      store.dispatch(updateScore(10));
+      store.dispatch(updateScore(10 * (level + 1)));
       setLevel(level + 1);
       generateWord(level + 1);
       setUserInput('');
@@ -111,23 +107,24 @@ const GamePlayPage = () => {
       {!isGameOver
         ?
         <div className="game-play">
-          {/* <Countdown
-            isPlaying
-            duration={10}
-            colors={[
-              ['#004777', 0.33],
-              ['#F7B801', 0.33],
-              ['#A30000', 0.33],
-            ]}
-          >
-            {({ remainingTime }) => remainingTime}
-          </Countdown> */}
-
+          <div className="timer-wrapper">
+            <Countdown
+              isPlaying
+              size={60}
+              strokeWidth={4}
+              duration={30}
+              // colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+              onComplete={onCompleteCountDown}
+              initialRemainingTime={30}
+              colors="#FF5050"
+            >
+            </Countdown>
+          </div>
           <h1 className="title">Complete the word: </h1>
 
-          <h2 className="lable">{maskedWord}</h2>
+          <h2 className="masked">{maskedWord}</h2>
 
-          <div className="game-play-input">
+          <div>
             <Input userInput={userInput} placeholderText={placeholder} handleUserInput={HandleInput} />
             <Button
               handleButton={handleCheckGuess}
@@ -137,20 +134,20 @@ const GamePlayPage = () => {
             />
           </div>
           {wrongAnswer ?
-            <h4 style={{ color: 'rgba(255, 80, 80, 1)' }}> Wrong guess! try something else! </h4>
+            <h4 style={{ color: 'rgba(255, 80, 80, 1)', marginBottom: '1.5em' }}>{wrongAnswer}Wrong guess! try something else! </h4>
             :
             ''
           }
-          <div className="game-play-page-progress">
-            <lable style={{ marginRight: '50px' }}>Guesses left: {life}</lable>
-            <lable style={{ marginRight: '50px' }}>Level: {level + 1}</lable>
-            <lable>Scor: {score}</lable>
+          <div>
+            <label className="label">Guesses left: {life}</label>
+            <label className="label">Level: {level + 1}</label>
+            <label className="label">Scor: {score}</label>
           </div>
         </div>
         :
-        <div className="game-play-loose">
-          <h1>The word was: {randomWord}</h1>
-          <h2>Your score: {score}</h2>
+        <div>
+          <h1 className="title">The word was: {randomWord}</h1>
+          <h2><label className="label">Your score: {score} </label></h2>
           <Button
             text="Game Over!"
             width="25vw"

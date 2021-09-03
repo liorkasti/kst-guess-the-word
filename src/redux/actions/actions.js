@@ -10,42 +10,42 @@ import {
 } from './types';
 
 export const riseLevel = {
-  type: 'RISE_LEVEL',
+  type: RISE_LEVEL,
   payload: 'riseLevel',
 };
 
 export const initLife = {
-  type: 'INIT_LIFE',
+  type: INIT_LIFE,
   payload: 'initLife',
 };
 
 export const initScore = {
-  type: 'INIT_SCORE',
+  type: INIT_SCORE,
   payload: 'initScore',
 };
 
 export const decrementLife = {
-  type: 'DECREMENT_LIFE',
+  type: DECREMENT_LIFE,
   payload: 'decrementLife',
 };
 
 export const updateScore = (number) => {
   return {
-    type: 'UPDATE_SCORE',
+    type: UPDATE_SCORE,
     payload: number,
   };
 };
 
 export const userMaxScore = (userScore) => {
   return {
-    type: 'USER_MAX_SCORE',
+    type: USER_MAX_SCORE,
     payload: userScore,
   };
 };
 
 export const addUser = (userName, userPhone) => {
   return {
-    type: 'ADD_USER',
+    type: ADD_USER,
     payload: {
       userName,
       userPhone,
@@ -55,7 +55,7 @@ export const addUser = (userName, userPhone) => {
 
 // export const countdownOver = () => {
 //   return {
-//     type: 'COUNTDOWN_OVER',
+//     type: COUNTDOWN_OVER,
 //     payload: 'gamePlay/countdownOver',
 //   };
 // };

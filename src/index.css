@@ -1,11 +1,11 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
-  -webkit-font-smoothing: antialiased;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-  text-align: center;
+  width                  : 100%;
+  text-align             : center;
 }
 
 code {
@@ -14,47 +14,60 @@ code {
 }
 
 .title {
-  width: 100%;
-  text-align: center;
-  margin: 1em;
-  overflow: hidden;
+  width        : 100%;
+  text-align   : center;
+  margin       : 1em;
+  overflow     : hidden;
   text-overflow: ellipsis;
-  font-size: 30px;
-  font-weight: 900;
-  margin: 1em 0 1em 0;
+  font-size    : 34px;
+  font-weight  : 900;
+  margin       : 1em 0 1em 0;
 }
 
-.lable {
-  background: #eee;
-  width: 100%;
-  text-align: center;
-  font-size: 26px;
-  animation: fadeIn 400ms;
-  margin: 1em;
-  padding: 0.3em;
-  font-weight: bold;
-  color: #222;
+.masked {
+  width           : 100%;
+  background      : #eee;
+  color           : #222;
+  padding         : 0.6em;
+  text-align      : center;
+  animation       : fadeIn 400ms;
+  font-size       : 26px;
+  font-weight     : bold;
+  /* border-radius: 1.1em; */
 }
+
+.label {
+  background   : #eee;
+  color        : #222;
+  text-align   : center;
+  animation    : fadeIn 400ms;
+  font-size    : 16px;
+  font-weight  : 500;
+  border-radius: 1.1em;
+  padding      : 0.5em 1em;
+  margin       : 0 1em;
+}
+
+.div-wrapper {
+  margin: 0 0 2em 0;
+}
+
+.app-bar {}
 
 input {
-  margin: 1em;
-  /* display: inline-block; */
-  height: 2.8em;
-  width: 25vw;
-  background: transparent;
-  margin: 0 1em 1em 0;
-  border: none;
-  background: rgba(255, 80, 80, 0.3);
-  font-size: inherit;
-  text-align: center;
+  height         : 2.8em;
+  width          : 25vw;
+  background     : rgba(255, 80, 80, 0.3);
+  font-size      : inherit;
+  text-align     : center;
   justify-content: center;
-  outline: 0px solid #eee;
-  box-shadow: 0 0 5px #eee;
-  border-radius: 5em;
-  transition: box-shadow 500ms ease-in-out;
-  border: 1px solid #ccc;
-  border-radius: 1.1em;
-  box-sizing: border-box;
+  outline        : 0px solid #eee;
+  box-shadow     : 0 0 5px #eee;
+  transition     : box-shadow 500ms ease-in-out;
+  border         : 1px solid #ccc;
+  border-radius  : 1.1em;
+  box-sizing     : border-box;
+  margin         : 1em;
 }
 
 input:hover {
@@ -66,33 +79,65 @@ input::placeholder {
 }
 
 button {
-  height: 3em;
-  width: 12vw;
-  margin: 0 1em 0 1em;
+  height       : 3em;
+  width        : 12vw;
+  margin       : 1em;
   border-radius: 1.1em;
-  background: rgba(255, 80, 80, 0.8);
-  color: #eee;
-  font-size: 1.5em;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  transition: all 300ms ease;
+  background   : rgba(255, 80, 80, 0.8);
+  color        : #eee;
+  cursor       : pointer;
+  border       : none;
+  outline      : none;
+  font-size    : 1em;
+  transition   : all 300ms ease;
 }
 
 button:disabled {
-  margin: 0;
+  margin    : 0;
   background: rgba(255, 80, 80, 1);
-  transform: scale(0.85);
+  transform : scale(0.85);
 }
 
 button:hover {
-  margin: 0 1em 0 1em;
   transform: scale(1.05);
 }
 
 .clear-button {
   position: fixed;
-  bottom: 2%;
-  z-index: 1;
+  bottom  : 2%;
+  z-index : 1;
+}
+
+.game-play-wrapper {
+  width: 100%;
+
+}
+
+.timer-wrapper {
+  align-items: center;
+  justify-content: center;
+  margin     : 1em 3em;
+}
+
+.card,
+.card-open {
+  /* height: 14em; */
+  width        : 25vw;
+  background   : #fff;
+  border-radius: 0.5em;
+  margin       : 10% auto;
+  color        : #444;
+  cursor       : pointer;
+  box-shadow   : 0 0 0.25em #999;
+  transition   : all 750ms;
+  animation    : popup 700ms;
+}
+
+.card-wrapper {
+  position       : absolute;
+  height         : inherit;
+  width          : inherit;
+  align-items    : center;
+  justify-content: center;
+  padding        : 2em;
 }
