@@ -18,6 +18,18 @@ import {
 } from '../../redux/actions/actions';
 import store from '../../redux/store';
 
+const renderTime = ({ remainingTime }) => {
+  if (remainingTime === 0) {
+    return <div className="timer">Too lale...</div>;
+  }
+
+  return (
+    <div className="timer">
+      {/* <div style={{fontSize: '8px'}}>remaining</div> */}
+      <div className="value">{remainingTime}</div>
+    </div>
+  );
+};
 const GamePlayPage = () => {
   const [maskedWord, setMaskedWord] = useState('');
   const [level, setLevel] = useState(0);
@@ -25,7 +37,7 @@ const GamePlayPage = () => {
   const [placeholder, setPlaceholder] = useState('_');
   const [randomWord, setRandomWord] = useState('');
   const [wrongAnswer, setWrongAnswer] = useState(false);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [GameOver, setGameOver] = useState(false);
 
   const startDate = React.useRef(Date.now());
 
@@ -53,7 +65,7 @@ const GamePlayPage = () => {
       const i = Math.floor(Math.random() * word.length);
       word = word.substring(0, i) + '_ ' + word.substring(i + 1);
       if (index === 0 || randomW.length - 1 !== index) {
-        console.log('WORD: ', word);
+        // console.log('WORD: ', word);
         setMaskedWord(word);
       }
     }
@@ -85,7 +97,7 @@ const GamePlayPage = () => {
       setWrongAnswer(true);
       if (life === 1) {
         console.log('loose');
-        setIsGameOver(true);
+        setGameOver(true);
       }
       store.dispatch(decrementLife);
     }
@@ -98,13 +110,13 @@ const GamePlayPage = () => {
     history.push('/game-over-page');
   };
 
-  const onCompleteCountDown = () => {
-    setIsGameOver(true);
+  const onCountdownOver = () => {
+    setGameOver(true);
   };
 
   return (
     <div className="game-play-wrapper">
-      {!isGameOver
+      {!GameOver
         ?
         <div className="game-play">
           <div className="timer-wrapper">
@@ -113,11 +125,11 @@ const GamePlayPage = () => {
               size={60}
               strokeWidth={4}
               duration={30}
-              // colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-              onComplete={onCompleteCountDown}
+              onComplete={onCountdownOver}
               initialRemainingTime={30}
               colors="#FF5050"
             >
+              {renderTime}
             </Countdown>
           </div>
           <h1 className="title">Complete the word: </h1>

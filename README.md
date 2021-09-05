@@ -35,7 +35,6 @@ _______________________________________________
 
 | Number | Description |
 | ------ | ------ |
-| 1 | Update style of countdown feature
-| 2 | Add testing
+| 1 | Add testing
 
 Enjoy! thank you.

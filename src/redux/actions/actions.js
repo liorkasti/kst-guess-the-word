@@ -56,6 +56,6 @@ export const addUser = (userName, userPhone) => {
 // export const countdownOver = () => {
 //   return {
 //     type: COUNTDOWN_OVER,
-//     payload: 'gamePlay/countdownOver',
+//     payload: 'countdownOver',
 //   };
 // };
