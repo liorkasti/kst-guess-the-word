@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -18,18 +18,6 @@ import {
 } from '../../redux/actions/actions';
 import store from '../../redux/store';
 
-const renderTime = ({ remainingTime }) => {
-  if (remainingTime === 0) {
-    return <div className="timer">Too lale...</div>;
-  }
-
-  return (
-    <div className="timer">
-      {/* <div style={{fontSize: '8px'}}>remaining</div> */}
-      <div className="value">{remainingTime}</div>
-    </div>
-  );
-};
 const GamePlayPage = () => {
   const [maskedWord, setMaskedWord] = useState('');
   const [level, setLevel] = useState(0);
@@ -132,6 +120,7 @@ const GamePlayPage = () => {
               {renderTime}
             </Countdown>
           </div>
+          
           <h1 className="title">Complete the word: </h1>
 
           <h2 className="masked">{maskedWord}</h2>
@@ -173,3 +162,16 @@ const GamePlayPage = () => {
 };
 
 export default GamePlayPage;
+
+const renderTime = ({ remainingTime }) => {
+  if (remainingTime === 0) {
+    return <div className="timer">Too lale...</div>;
+  }
+
+  return (
+    <div className="timer">
+      {/* <div style={{fontSize: '8px'}}>remaining</div> */}
+      <div className="value">{remainingTime}</div>
+    </div>
+  );
+};
